@@ -1,20 +1,46 @@
-// GrafkomG-SA2020-TR1.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+#include <GL/freeglut.h>
 
-int main()
-{
-    std::cout << "Hello World!\n";
+int is_depth;
+
+int main(int argc, char** argv){
+	glutInit(&argc, argv);
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+	glutInitWindowSize(1920, 1080);
+	glutInitWindowPosition(0, 0);
+	glutCreateWindow("Taman Anggrek Mall - 3D");
+	init();
+	glutDisplayFunc(tampil);
+	glutReshapeFunc(ukuran);
+	glutMainLoop();
+	return 0;
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
+void init(void) {
+	glClearColor(224 / 255, 255 / 255, 255 / 255, 0.0);
+	glMatrixMode(GL_PROJECTION);
+	glEnable(GL_DEPTH_TEST);
+	is_depth = 1;
+	glMatrixMode(GL_MODELVIEW);
+	glPointSize(9.0);
+	glLineWidth(1.0f);
+}
 
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+void tampil(void) {
+	if (is_depth)
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	else
+		glClear(GL_COLOR_BUFFER_BIT);
+	
+	glutSwapBuffers();
+}
+
+void ukuran(int lebar, int tinggi) {
+	if (tinggi == 0) tinggi = 1;
+
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluPerspective(50.0, lebar / tinggi, 5.0, 1000.0);
+	glTranslatef(0.0, -5.0, -400.0);
+	glMatrixMode(GL_MODELVIEW);
+}
