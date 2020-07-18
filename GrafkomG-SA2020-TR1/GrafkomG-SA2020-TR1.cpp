@@ -2,7 +2,24 @@
 #include <GL/freeglut.h>
 #include "Controller.h"
 
-controller cc;
+controller *cc;
+void tampilFunc( void ) {
+	cc->tampil();
+}
+void initFunc( void) {
+	cc->init();
+}
+void mouseFunc(int button, int state, int x, int y) {
+	cc->mouse(&button, &state, &x, &y);
+}
+
+void keyboardFunc(unsigned char key, int x, int y) {
+	cc->keyboard(&key, &x, &y);
+}
+
+void ukuranFunc(int lebar, int tinggi) {
+	cc->ukuran(&lebar, &tinggi);
+}
 
 int main(int argc, char** argv){
 	glutInit(&argc, argv);
@@ -10,10 +27,11 @@ int main(int argc, char** argv){
 	glutInitWindowSize(1920, 1080);
 	glutInitWindowPosition(0, 0);
 	glutCreateWindow("Taman Anggrek Mall - 3D");
-	cc.init();
-	glutMouseFunc(cc.mouse);
-	glutDisplayFunc(cc.tampil);
-	glutReshapeFunc(cc.ukuran);
+	initFunc();
+	glutMouseFunc(mouseFunc);
+	glutDisplayFunc(tampilFunc);
+	glutReshapeFunc(ukuranFunc);
+	glutKeyboardFunc(keyboardFunc);
 	glutMainLoop();
 	return 0;
 }

@@ -2,7 +2,7 @@
 // Author: Ado Nugroho
 class Mall {
 public:
-	void dinding(int z1, int z2) {
+	void dinding(double z1, double z2) {
 		int y1 = 0;
 		int y2 = 35;
 		glColor3ub(255, 178, 102);
@@ -444,7 +444,7 @@ public:
 		glEnd();
 	}
 
-	void garis_dinding(int z1, int z2) {
+	void garis_dinding(double z1, double z2) {
 		int y1 = 0;
 		int y2 = 35;
 		glColor3ub(105, 105, 105);
@@ -885,7 +885,7 @@ public:
 		glEnd();
 	}
 
-	void atas_bawah(int r, int g, int b, int y1) {
+	void atas_bawah(int r, int g, int b, double y1) {
 		glColor3ub(r, g, b);
 		glBegin(GL_POLYGON);
 		glVertex3d(-149.10, y1, 28.99);

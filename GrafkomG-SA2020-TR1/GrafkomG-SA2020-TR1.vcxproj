@@ -149,11 +149,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="bmploader.cpp" />
     <ClCompile Include="GrafkomG-SA2020-TR1.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="bmploader.h" />
     <ClInclude Include="Controller.h" />
     <ClInclude Include="Mall.h" />
+    <ClInclude Include="Texture.h" />
     <ClInclude Include="Tower.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

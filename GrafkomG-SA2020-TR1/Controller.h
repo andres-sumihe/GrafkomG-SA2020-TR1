@@ -10,7 +10,7 @@ int is_depth;
 
 class controller {
 public:
-	void tampil(void) {
+	void tampil() {
 		if (is_depth)
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		else
@@ -102,7 +102,7 @@ public:
 		tw.dinding_octagon_atas(48.58, -103.08);
 		glutSwapBuffers();
 	}
-	void init(void) {
+	void init() {
 		glClearColor(224 / 255, 255 / 255, 255 / 255, 0.0);
 		glMatrixMode(GL_PROJECTION);
 		glEnable(GL_DEPTH_TEST);
@@ -111,11 +111,65 @@ public:
 		glPointSize(9.0);
 		glLineWidth(1.0f);
 	}
-	void mouse(int &button, int &state, int &x, int &y) {
-		if ((button == 3) || (button == 4)) {
+	void mouse(int* button, int* state, int* x, int* y) {
+		if ((*button == 3) || (*button == 4)) {
 			//zoom dengan scrolling mouse
-			if (state == GLUT_UP) return;
-			(button == 3) ? glScalef(.99f, .99f, 0.99f) : glScalef(1.01f, 1.01f, 1.01f);
+			if (*state == GLUT_UP) return;
+			(*button == 3) ? glScalef(.99f, .99f, 0.99f) : glScalef(1.01f, 1.01f, 1.01f);
+		}
+		glutPostRedisplay();
+	}
+
+	void keyboard(unsigned char* key, int* x, int* y) {
+		switch (*key) {
+		case 'w':
+		case 'W':
+			glTranslatef(0.0, 3.0, 0.0);
+			break;
+		case 'd':
+		case 'D':
+			glTranslatef(3.0, 0.0, 0.0);
+			break;
+		case 's':
+		case 'S':
+			glTranslatef(0.0, -3.0, 0.0);
+			break;
+		case 'a':
+		case 'A':
+			glTranslatef(-3.0, 0.0, 0.0);
+			break;
+		case 'g':
+		case 'G':
+			glRotatef(2.0, 1.0, 0.0, 0.0);
+			break;
+		case 'b':
+		case 'B':
+			glRotatef(-2.0, 1.0, 0.0, 0.0);
+			break;
+		case 'h':
+		case 'H':
+			glRotatef(2.0, 0.0, 1.0, 0.0);
+			break;
+		case 'n':
+		case 'N':
+			glRotatef(-2.0, 0.0, 1.0, 0.0);
+			break;
+		case 'j':
+		case 'J':
+			glRotatef(2.0, 0.0, 0.0, 1.0);
+			break;
+		case 'm':
+		case 'M':
+			glRotatef(-2.0, 0.0, 0.0, 1.0);
+			break;
+		case 'z':
+		case 'Z':
+			glScalef(0.8f, 0.8f, 0.8f);
+			break;
+		case 'x':
+		case 'X':
+			glScalef(1.2f, 1.2f, 1.2f);
+			break;
 		}
 		glutPostRedisplay();
 	}
