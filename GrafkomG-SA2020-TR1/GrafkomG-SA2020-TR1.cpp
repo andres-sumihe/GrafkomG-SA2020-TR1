@@ -4,15 +4,7 @@
 
 controller cc;
 
-void ukuran(int lebar, int tinggi) {
-	if (tinggi == 0) tinggi = 1;
 
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	gluPerspective(50.0, lebar / tinggi, 5.0, 1000.0);
-	glTranslatef(0.0, -5.0, -400.0);
-	glMatrixMode(GL_MODELVIEW);
-}
 
 void tampil(void) {
 	if (is_depth)
@@ -30,8 +22,9 @@ int main(int argc, char** argv){
 	glutInitWindowPosition(0, 0);
 	glutCreateWindow("Taman Anggrek Mall - 3D");
 	cc.init();
+	glutMouseFunc(cc.mouse);
 	glutDisplayFunc(tampil);
-	glutReshapeFunc(ukuran);
+	glutReshapeFunc(cc.ukuran);
 	glutMainLoop();
 	return 0;
 }
