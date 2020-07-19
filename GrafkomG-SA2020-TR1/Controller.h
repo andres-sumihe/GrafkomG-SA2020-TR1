@@ -3,6 +3,7 @@
 #include "Mall.h"
 #include "Tower.h"
 
+
 tower tw;
 Mall dd;
 
@@ -179,7 +180,7 @@ public:
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
 		gluPerspective(50.0, *lebar / *tinggi, 5.0, 1000.0);
-		glTranslatef(0.0, 5.0, -400.0);
+		glTranslatef(0.0, -70.0, -600.0);
 		glMatrixMode(GL_MODELVIEW);
 	}
 
