@@ -243,6 +243,7 @@ public:
 
 	void ukuran(int *lebar, int *tinggi) {
 		if (*tinggi == 0) *tinggi = 1;
+		glViewport(0, 0, *lebar, *tinggi);
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
 		gluPerspective(45.0f, *lebar / *tinggi, 5.0, 1000.0);
