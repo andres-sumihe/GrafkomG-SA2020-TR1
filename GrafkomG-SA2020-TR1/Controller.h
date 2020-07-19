@@ -52,6 +52,29 @@ public:
 		obj.PohonBatang(-125, 20);
 		obj.PohonDaun(-125, -125, 20, 20);
 
+		//Tanah
+		obj.Tanah(-180, 160, 160, -200);
+
+		//Jalan
+		obj.Jalan(-170, 140, 100, 140);
+
+		//Trotoar
+		obj.Trotoar(-170, 140, 141, 143);
+		obj.Trotoar(-170, 140, 99, 97);
+
+		//Strip Jalan
+		obj.StripJalan(-170, -160, 119, 120);
+		obj.StripJalan(-140, -130, 119, 120);
+		obj.StripJalan(-110, -100, 119, 120);
+		obj.StripJalan(-80, -70, 119, 120);
+		obj.StripJalan(-50, -40, 119, 120);
+		obj.StripJalan(-20, -10, 119, 120);
+		obj.StripJalan(10, 20, 119, 120);
+		obj.StripJalan(40, 50, 119, 120);
+		obj.StripJalan(70, 80, 119, 120);
+		obj.StripJalan(100, 110, 119, 120);
+		obj.StripJalan(130, 140, 119, 120);
+
 		//Awan
 		obj.Awan(-5, 5, 0, 0);
 		obj.Awan(-30, -10, -50, -50);
