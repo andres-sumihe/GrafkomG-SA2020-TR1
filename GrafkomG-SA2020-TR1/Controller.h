@@ -82,6 +82,16 @@ public:
 		tw.biru_biru(170.74, -18.53);
 		tw.biru_biru(48.58, -103.08);
 
+		//Garis Biru-Biru
+		tw.garis_biru_biru(0, 0);
+		tw.garis_biru_biru(13.77, -52.08);
+		tw.garis_biru_biru(58.58, -23.08);
+		tw.garis_biru_biru(93.18, -61.83);
+		tw.garis_biru_biru(119.11, -14.63);
+		tw.garis_biru_biru(190.02, 30.5);
+		tw.garis_biru_biru(170.74, -18.53);
+		tw.garis_biru_biru(48.58, -103.08);
+
 		//Octagon-Atas
 		tw.octagon_atas(0, 0);
 		tw.octagon_atas(13.77, -52.08);
@@ -106,7 +116,16 @@ public:
 	void init() {
 		glClearColor(224 / 255, 255 / 255, 255 / 255, 0.0);
 		glMatrixMode(GL_PROJECTION);
+		glEnable(GL_LIGHTING);
+		glEnable(GL_COLOR_MATERIAL);
+		glEnable(GL_LIGHT0);
 		glEnable(GL_DEPTH_TEST);
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glEnable(GL_LINE_SMOOTH);
+		glEnable(GL_POINT_SMOOTH);
+		glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+		glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
 		is_depth = 1;
 		glMatrixMode(GL_MODELVIEW);
 		glPointSize(9.0);
@@ -138,7 +157,7 @@ public:
 		case 'a':
 		case 'A':
 			glTranslatef(-3.0, 0.0, 0.0);
-			break;
+			break;	
 		case 'g':
 		case 'G':
 			glRotatef(2.0, 1.0, 0.0, 0.0);
