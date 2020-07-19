@@ -106,6 +106,12 @@ public:
 		glClearColor(224 / 255, 255 / 255, 255 / 255, 0.0);
 		glMatrixMode(GL_PROJECTION);
 		glEnable(GL_DEPTH_TEST);
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glEnable(GL_LINE_SMOOTH);
+		glEnable(GL_POINT_SMOOTH);
+		glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+		glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
 		is_depth = 1;
 		glMatrixMode(GL_MODELVIEW);
 		glPointSize(9.0);
