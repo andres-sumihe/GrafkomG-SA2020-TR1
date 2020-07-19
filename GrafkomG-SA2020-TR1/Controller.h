@@ -10,11 +10,12 @@ float ypos = 0.0f;
 float xdiff = 0.0f;
 float ydiff = 0.0f;
 bool mouseDown = false;
+bool scrollDown = false;
+bool scrollUp = false;
 
 tower tw;
 Mall dd;
 object obj;
-
 int is_depth;
 
 class controller {
@@ -24,10 +25,8 @@ public:
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		else
 			glClear(GL_COLOR_BUFFER_BIT);
-		glLoadIdentity();
+
 		gluLookAt(0.0f, 0.0f, 0.1f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
-		glRotatef(xpos, 1.0f, 0.0f, 0.0f);
-		glRotatef(ypos, 0.0f, 1.0f, 0.0f);
 		glPushMatrix();
 		//Lantai 1
 		dd.dinding(0.0, 35.0);
@@ -151,39 +150,20 @@ public:
 	}
 	void mouse(int* button, int* state, int* x, int* y) {
 		
-
-		if ((*button == 3) || (*button == 4)) // It's a wheel event
-		{
+		std::cout << *button << std::endl;
 		
-			if (*state == GLUT_UP) return;
-			if (*button == 4) {
-				std::cout << *state;
-				glScalef(.99f, .99f, 0.99f);
-				glutPostRedisplay();
-			}
-			else {
-				std::cout << *state;
-				glScalef(1.01f, 1.01f, 1.01f);
-				glutPostRedisplay();
-			}
-		}
-		else if (*button == GLUT_LEFT_BUTTON && *state == GLUT_DOWN) {
+		if (*button == GLUT_LEFT_BUTTON && *state == GLUT_DOWN) {
 			mouseDown = true;
 			xdiff = (*x - ypos);
 			ydiff = (-*y + xpos);
-			std::cout << *x << std::endl;
+			
 		}
 		else {
 			mouseDown = false;
 		}
 		
 	}
-	void mouseWheel(int* button, int* state, int* x, int* y) {
-		
-		(*state == -1) ? glScalef(.99f, .99f, 0.99f) : glScalef(1.01f, 1.01f, 1.01f);
-		
-		glutPostRedisplay();
-	}
+	
 
 	void Idle() {
 		if (!mouseDown) {
@@ -197,20 +177,40 @@ public:
 		case 'd':
 		case 'D':
 			glTranslatef(3.0, 0.0, 0.0);
+			glutPostRedisplay();
 			break;
-
 		case 'a':
 		case 'A':
 			glTranslatef(-3.0, 0.0, 0.0);
+			glutPostRedisplay();
 			break;	
+		default:
+			glTranslatef(0.0, 0.0, 0.0);
+			break;
 		}
-		glutPostRedisplay();
+		
 	}
+	void mouseWheel(int* button, int* state, int* x, int* y) {
+		std::cout << *state << std::endl;
+		if (*state < 0) {
+			glScalef(.99f, .99f, 0.99f);
+			glutPostRedisplay();
+			std::cout << "zoom out" << std::endl;
+		}
+		else {
+			glScalef(1.01f, 1.01f, 1.01f);
+			glutPostRedisplay();
+		}
 
+
+	}
 	void MouseMotion(int *x, int *y) {
 		if (mouseDown) {
 			ypos = *x - xdiff;
 			xpos = *y + xdiff;
+			glLoadIdentity();
+			glRotatef(xpos, 1.0f, 0.0f, 0.0f);
+			glRotatef(ypos, 0.0f, 1.0f, 0.0f);
 			std::cout << ypos << " : " << xpos << std::endl;
 			glutPostRedisplay();
 		}

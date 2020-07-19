@@ -1,6 +1,5 @@
 #include <iostream>
 #include <GL/freeglut.h>
-#include <GL/glut.h>
 #include "Controller.h"
 
 controller *cc;
@@ -45,7 +44,7 @@ int main(int argc, char** argv){
 	glutKeyboardFunc(keyboardFunc);
 	glutMotionFunc(MouseMotionFunc);
 	glutMouseWheelFunc(mouseWheelFunc);
-	glutIdleFunc(idleFunc);
+	//glutIdleFunc(idleFunc);
 	glutMainLoop();
 
 	return 0;
