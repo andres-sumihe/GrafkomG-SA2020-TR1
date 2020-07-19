@@ -62,6 +62,8 @@ public:
 		obj.Trotoar(-170, 140, 141, 143);
 		obj.Trotoar(-170, 140, 99, 97);
 
+		//Papan Reklame
+		obj.PapanReklame(0.0, 12.0);
 		//Strip Jalan
 		obj.StripJalan(-170, -160, 119, 120);
 		obj.StripJalan(-140, -130, 119, 120);
