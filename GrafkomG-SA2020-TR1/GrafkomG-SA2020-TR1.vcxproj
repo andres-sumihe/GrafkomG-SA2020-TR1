@@ -156,6 +156,7 @@
     <ClInclude Include="bmploader.h" />
     <ClInclude Include="Controller.h" />
     <ClInclude Include="Mall.h" />
+    <ClInclude Include="Object.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Tower.h" />
   </ItemGroup>

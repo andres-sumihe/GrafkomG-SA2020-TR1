@@ -24,10 +24,11 @@ public:
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		else
 			glClear(GL_COLOR_BUFFER_BIT);
-	
+		glLoadIdentity();
+		gluLookAt(0.0f, 0.0f, 0.1f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
 		glRotatef(xpos, 1.0f, 0.0f, 0.0f);
 		glRotatef(ypos, 0.0f, 1.0f, 0.0f);
-	
+		glPushMatrix();
 		//Lantai 1
 		dd.dinding(0.0, 35.0);
 		dd.garis_dinding(0.0, 35.0);
@@ -123,12 +124,13 @@ public:
 		tw.dinding_octagon_atas(190.02, 30.5);
 		tw.dinding_octagon_atas(170.74, -18.53);
 		tw.dinding_octagon_atas(48.58, -103.08);
-		glPushMatrix();
+		
 		glPopMatrix();
 		glutSwapBuffers();
 	}
 	void init() {
 		glClearColor(224 / 255, 255 / 255, 255 / 255, 0.0);
+		glOrtho(-200.0, 200.0, -200.0, 200.0, -200.0, 200.0);
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
 		glEnable(GL_LIGHTING);
@@ -141,37 +143,51 @@ public:
 		glEnable(GL_POINT_SMOOTH);
 		glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 		glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
-		gluLookAt(0.0f, 0.0f, 3.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
-		glRotatef(xpos, 1.0f, 0.0f, 0.0f);
-		glRotatef(ypos, 0.0f, 1.0f, 0.0f);
+		
 		is_depth = 1;
 		glMatrixMode(GL_MODELVIEW);
 		glPointSize(9.0);
 		glLineWidth(1.0f);
 	}
 	void mouse(int* button, int* state, int* x, int* y) {
-		if (*button == GLUT_LEFT_BUTTON && *state == GLUT_DOWN) {
+		
+
+		if ((*button == 3) || (*button == 4)) // It's a wheel event
+		{
+		
+			if (*state == GLUT_UP) return;
+			if (*button == 4) {
+				std::cout << *state;
+				glScalef(.99f, .99f, 0.99f);
+				glutPostRedisplay();
+			}
+			else {
+				std::cout << *state;
+				glScalef(1.01f, 1.01f, 1.01f);
+				glutPostRedisplay();
+			}
+		}
+		else if (*button == GLUT_LEFT_BUTTON && *state == GLUT_DOWN) {
 			mouseDown = true;
-			xdiff = (*x/1000 - ypos) /1000;
-			ydiff = (-*y/1000 + xpos) /1000;
+			xdiff = (*x - ypos);
+			ydiff = (-*y + xpos);
 			std::cout << *x << std::endl;
 		}
 		else {
 			mouseDown = false;
 		}
-		if ((*button == 3) || (*button == 4)) {
-			mouseDown = false;
-			//zoom dengan scrolling mouse
-			if (*state == GLUT_UP) return;
-			(*button == 4 && *state != GLUT_UP) ? glScalef(.99f, .99f, 0.99f) : glScalef(1.01f, 1.01f, 1.01f);
-		}
+		
+	}
+	void mouseWheel(int* button, int* state, int* x, int* y) {
+		
+		(*state == -1) ? glScalef(.99f, .99f, 0.99f) : glScalef(1.01f, 1.01f, 1.01f);
+		
 		glutPostRedisplay();
 	}
 
 	void Idle() {
 		if (!mouseDown) {
-			xpos += 0.3f;
-			ypos += 0.4f;
+			ypos += 0.3f;
 		}
 		glutPostRedisplay();
 	}
@@ -193,8 +209,8 @@ public:
 
 	void MouseMotion(int *x, int *y) {
 		if (mouseDown) {
-			ypos = *x/100 - xdiff;
-			xpos = *y/100 + xdiff;
+			ypos = *x - xdiff;
+			xpos = *y + xdiff;
 			std::cout << ypos << " : " << xpos << std::endl;
 			glutPostRedisplay();
 		}
@@ -204,9 +220,10 @@ public:
 		if (*tinggi == 0) *tinggi = 1;
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
-		gluPerspective(50.0, *lebar / *tinggi, 5.0, 1000.0);
+		gluPerspective(45.0f, *lebar / *tinggi, 5.0, 1000.0);
 		glTranslatef(0.0, -70.0, -600.0);
 		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
 
 	}
 

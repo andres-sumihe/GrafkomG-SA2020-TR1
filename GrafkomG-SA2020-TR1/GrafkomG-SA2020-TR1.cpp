@@ -1,5 +1,6 @@
 #include <iostream>
 #include <GL/freeglut.h>
+#include <GL/glut.h>
 #include "Controller.h"
 
 controller *cc;
@@ -23,6 +24,14 @@ void ukuranFunc(int lebar, int tinggi) {
 void MouseMotionFunc(int x, int y) {
 	cc->MouseMotion(&x, &y);
 }
+
+void mouseWheelFunc(int button, int state, int x, int y) {
+	cc->mouseWheel(&button, &state, &x, &y);
+}
+
+void idleFunc() {
+	cc->Idle();
+}
 int main(int argc, char** argv){
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_MULTISAMPLE);
@@ -35,6 +44,8 @@ int main(int argc, char** argv){
 	glutReshapeFunc(ukuranFunc);
 	glutKeyboardFunc(keyboardFunc);
 	glutMotionFunc(MouseMotionFunc);
+	glutMouseWheelFunc(mouseWheelFunc);
+	glutIdleFunc(idleFunc);
 	glutMainLoop();
 
 	return 0;
