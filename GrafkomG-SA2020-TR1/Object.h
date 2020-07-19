@@ -299,4 +299,256 @@ public:
 		glLineWidth(1.0f);
 		KotakShape2(1 - x1, 1 + x2, 1 - z1, 1 + z2, 1, 4);
 	}
+	void PapanReklame(double y1, double y2) {
+		glColor3ub(102, 102, 102);
+		//dinding
+		glBegin(GL_POLYGON);
+		glVertex3d(-23.66, y1, 51.38);
+		glVertex3d(-22.04, y1, 51.38);
+		glVertex3d(-22.04, y2, 51.38);
+		glVertex3d(-23.66, y2, 51.38);
+		glEnd();
+
+		glBegin(GL_POLYGON);
+		glVertex3d(-22.04, y1, 51.38);
+		glVertex3d(-22.04, y2, 51.38);
+		glVertex3d(-22.04, y2, 49.35);
+		glVertex3d(-22.04, y1, 49.35);
+		glEnd();
+
+		glBegin(GL_POLYGON);
+		glVertex3d(-22.04, y2, 49.35);
+		glVertex3d(-22.04, y1, 49.35);
+		glVertex3d(-23.66, y1, 49.35);
+		glVertex3d(-23.66, y2, 49.35);
+		glEnd();
+
+		glBegin(GL_POLYGON);
+		glVertex3d(-23.66, y1, 49.35);
+		glVertex3d(-23.66, y2, 49.35);
+		glVertex3d(-23.66, y2, 51.38);
+		glVertex3d(-23.66, y1, 51.38);
+		glEnd();
+
+		//Alas Bagian Atas
+		glBegin(GL_POLYGON);
+		glVertex3d(-14.74, y2, 51.38);
+		glVertex3d(-14.74, y2, 49.35);
+		glVertex3d(-30.95, y2, 49.35);
+		glVertex3d(-30.95, y2, 51.38);
+		glEnd();
+
+		//Papan
+		glBegin(GL_POLYGON);
+		glVertex3d(-30.95, 12, 49.35);
+		glVertex3d(-30.95, 32, 49.35);
+		glVertex3d(-14.74, 32, 49.35);
+		glVertex3d(-14.74, 12, 49.35);
+		glEnd();
+		//
+		glBegin(GL_POLYGON);
+		glVertex3d(-14.74, 32, 49.35);
+		glVertex3d(-14.74, 12, 49.35);
+		glVertex3d(-14.74, 12, 51.38);
+		glVertex3d(-14.74, 32, 51.38);
+		glEnd();
+		//
+		glBegin(GL_POLYGON);
+		glVertex3d(-14.74, 12, 51.38);
+		glVertex3d(-14.74, 32, 51.38);
+		glVertex3d(-15.37, 32, 51.38);
+		glVertex3d(-15.37, 12, 51.38);
+		glEnd();
+		//Latar 
+		glColor3ub(0, 0, 255);
+		glBegin(GL_POLYGON);
+		glVertex3d(-15.37, 32, 51.38);
+		glVertex3d(-15.37, 12, 51.38);
+		glVertex3d(-15.37, 12, 50.08);
+		glVertex3d(-15.37, 32, 50.08);
+		glEnd();
+		//
+		glBegin(GL_POLYGON);
+		glVertex3d(-15.37, 12, 50.08);
+		glVertex3d(-15.37, 32, 50.08);
+		glVertex3d(-29.98, 32, 50.08);
+		glVertex3d(-29.98, 12, 50.08);
+		glEnd();
+		//
+		glBegin(GL_POLYGON);
+		glVertex3d(-29.98, 32, 50.08);
+		glVertex3d(-29.98, 12, 50.08);
+		glVertex3d(-29.98, 12, 51.38);
+		glVertex3d(-29.98, 32, 51.38);
+		glEnd();
+		//
+		glColor3ub(102, 102, 102);
+		glBegin(GL_POLYGON);
+		glVertex3d(-29.98, 12, 51.38);
+		glVertex3d(-29.98, 32, 51.38);
+		glVertex3d(-30.95, 32, 51.38);
+		glVertex3d(-30.95, 12, 51.38);
+		glEnd();
+		//Atas Papan
+		glBegin(GL_POLYGON);
+		glVertex3d(-30.95, 32, 49.35);
+		glVertex3d(-29.98, 32, 49.35);
+		glVertex3d(-29.98, 32, 51.38);
+		glVertex3d(-30.95, 32, 51.38);
+		glEnd();
+		//
+		glBegin(GL_POLYGON);
+		glVertex3d(-29.98, 32, 49.35);
+		glVertex3d(-15.37, 32, 49.35);
+		glVertex3d(-15.37, 32, 50.08);
+		glVertex3d(-29.98, 32, 50.08);
+		glEnd();
+		//
+		glBegin(GL_POLYGON);
+		glVertex3d(-15.37, 32, 49.35);
+		glVertex3d(-15.37, 32, 50.08);
+		glVertex3d(-14.74, 32, 49.35);
+		glVertex3d(-14.74, 32, 51.38);
+		glVertex3d(-15.37, 32, 51.38);
+		glEnd();
+
+		//Huruf T
+		glColor3ub(255, 255, 254);
+		glBegin(GL_POLYGON);
+		glVertex3d(-27.89, 30, 50.08);
+		glVertex3d(-22.77, 30, 50.08);
+		glVertex3d(-22.77, 30, 50.85);
+		glVertex3d(-27.89, 30, 50.85);
+		glEnd();
+
+		glBegin(GL_POLYGON);
+		glVertex3d(-22.77, 30, 50.85);
+		glVertex3d(-27.89, 30, 50.85);
+		glVertex3d(-27.89, 29, 50.85);
+		glVertex3d(-25.75, 29, 50.85);
+		glVertex3d(-22.77, 29, 50.85);
+		glEnd();
+
+		glBegin(GL_POLYGON);
+		glVertex3d(-25.75, 18, 50.85);
+		glVertex3d(-24.91, 18, 50.85);
+		glVertex3d(-24.91, 29, 50.85);
+		glVertex3d(-25.75, 29, 50.85);
+		glEnd();
+
+		//
+		glBegin(GL_POLYGON);
+		glVertex3d(-22.77, 30, 50.08);
+		glVertex3d(-22.77, 30, 50.85);
+		glVertex3d(-22.77, 29, 50.85);
+		glVertex3d(-22.77, 29, 50.08);
+		glEnd();
+		//
+		glBegin(GL_POLYGON);
+		glVertex3d(-22.77, 29, 50.85);
+		glVertex3d(-22.77, 29, 50.08);
+		glVertex3d(-24.01, 29, 50.08);
+		glVertex3d(-24.01, 29, 50.85);
+		glEnd();
+
+		glBegin(GL_POLYGON);
+		glVertex3d(-24.91, 29, 50.08);
+		glVertex3d(-24.91, 29, 50.85);
+		glVertex3d(-24.91, 18, 50.85);
+		glVertex3d(-24.91, 18, 50.08);
+		glEnd();
+
+		glBegin(GL_POLYGON);
+		glVertex3d(-24.91, 18, 50.85);
+		glVertex3d(-24.91, 18, 50.08);
+		glVertex3d(-25.75, 18, 50.08);
+		glVertex3d(-25.75, 18, 50.85);
+		glEnd();
+
+
+		glBegin(GL_POLYGON);
+		glVertex3d(-25.75, 18, 50.08);
+		glVertex3d(-25.75, 18, 50.85);
+		glVertex3d(-25.75, 29, 50.85);
+		glVertex3d(-25.75, 29, 50.08);
+		glEnd();
+
+		glBegin(GL_POLYGON);
+		glVertex3d(-25.75, 29, 50.85);
+		glVertex3d(-25.75, 29, 50.08);
+		glVertex3d(-27.89, 29, 50.08);
+		glVertex3d(-27.89, 29, 50.85);
+		glEnd();
+
+		glBegin(GL_POLYGON);
+		glVertex3d(-27.89, 29, 50.08);
+		glVertex3d(-27.89, 29, 50.85);
+		glVertex3d(-27.89, 30, 50.85);
+		glVertex3d(-27.89, 30, 50.08);
+		glEnd();
+
+		//A
+		glBegin(GL_LINE_LOOP);
+		glVertex3d(-22.82, 18, 50.08);
+		glVertex3d(-22.82, 18, 50.85);
+		glVertex3d(-20.67, 30, 50.85);
+		glVertex3d(-20.67, 30, 50.08);
+		glEnd();
+
+		glBegin(GL_LINE_LOOP);
+		glVertex3d(-20.67, 30, 50.85);
+		glVertex3d(-20.67, 30, 50.08);
+		glVertex3d(-19.63, 30, 50.08);
+		glVertex3d(-19.63, 30, 50.85);
+		glEnd();
+
+		glBegin(GL_LINE_LOOP);
+		glVertex3d(-19.63, 30, 50.08);
+		glVertex3d(-19.63, 30, 50.85);
+		glVertex3d(-17.48, 18, 50.85);
+		glVertex3d(-17.48, 18, 50.08);
+		glEnd();
+
+		glBegin(GL_LINE_LOOP);
+		glVertex3d(-17.48, 18, 50.85);
+		glVertex3d(-17.48, 18, 50.08);
+		glVertex3d(-18.37, 18, 50.08);
+		glVertex3d(-18.37, 18, 50.85);
+		glEnd();
+
+		glBegin(GL_LINE_LOOP);
+		glVertex3d(-18.37, 18, 50.08);
+		glVertex3d(-18.37, 18, 50.85);
+		glVertex3d(-18.95, 20.3, 50.85);
+		glVertex3d(-18.95, 20.3, 50.08);
+		glEnd();
+
+		glBegin(GL_LINE_LOOP);
+		glVertex3d(-18.95, 20.3, 50.85);
+		glVertex3d(-18.95, 20.3, 50.08);
+		glVertex3d(-21.38, 20.3, 50.08);
+		glVertex3d(-21.38, 20.3, 50.85);
+		glEnd();
+
+		glBegin(GL_LINE_LOOP);
+		glVertex3d(-21.38, 20.3, 50.08);
+		glVertex3d(-21.38, 20.3, 50.85);
+		glVertex3d(-21.96, 18, 50.85);
+		glVertex3d(-21.96, 18, 50.08);
+		glEnd();
+
+		glBegin(GL_LINE_LOOP);
+		glVertex3d(-21.96, 18, 50.85);
+		glVertex3d(-21.96, 18, 50.08);
+		glVertex3d(-22.82, 18, 50.08);
+		glVertex3d(-22.82, 18, 50.85);
+		glEnd();
+
+		glBegin(GL_LINE_LOOP);
+		glVertex3f(-20.17, 28, 50.85);
+		glVertex3f(-21.15, 21.3, 50.85);
+		glVertex3f(-19.19, 21.3, 50.85);
+		glEnd();
+
+	}
 };
