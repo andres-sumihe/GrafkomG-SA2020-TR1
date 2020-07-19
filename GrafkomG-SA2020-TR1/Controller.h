@@ -35,6 +35,31 @@ public:
 		dd.atas_bawah(173, 216, 230, 0);
 		dd.atas_bawah(154, 205, 50, 33);
 
+		//Pohon
+		obj.PohonBatang(0, 0);
+		obj.PohonDaun(0, 0, 0, 0);
+		obj.PohonBatang(20, 20);
+		obj.PohonDaun(20, 20, 20, 20);
+		obj.PohonBatang(40, 40);
+		obj.PohonDaun(40, 40, 40, 40);
+		obj.PohonBatang(60, 60);
+		obj.PohonDaun(60, 60, 60, 60);
+		obj.PohonBatang(80, 80);
+		obj.PohonDaun(80, 80, 80, 80);
+		obj.PohonBatang(-80, 15);
+		obj.PohonDaun(-80, -80, 15, 15);
+		obj.PohonBatang(-100, 20);
+		obj.PohonDaun(-100, -100, 20, 20);
+		obj.PohonBatang(-125, 20);
+		obj.PohonDaun(-125, -125, 20, 20);
+
+		//Awan
+		obj.Awan(-5, 5, 0, 0);
+		obj.Awan(-30, -10, -50, -50);
+		obj.Awan(30, 40, -30, -30);
+		obj.Awan(-140, -120, -30, -30);
+		obj.Awan(-70, -60, -70, -100);
+
 		//Tower
 		tw.dinding_tower(0, 0);
 		tw.dinding_tower(13.77, -52.08);

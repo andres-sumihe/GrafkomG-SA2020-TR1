@@ -45,7 +45,7 @@ int main(int argc, char** argv){
 	glutKeyboardFunc(keyboardFunc);
 	glutMotionFunc(MouseMotionFunc);
 	glutMouseWheelFunc(mouseWheelFunc);
-	glutIdleFunc(idleFunc);
+	//glutIdleFunc(idleFunc);
 	glutMainLoop();
 
 	return 0;
