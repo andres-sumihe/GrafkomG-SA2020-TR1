@@ -613,6 +613,149 @@ public:
 		glEnd();
 	}
 
+	void garis_biru_biru(double x, double z) {
+		int y4 = 172;
+		int y5 = 176;
+
+		glLineWidth(2.0f);
+		glColor3ub(0, 0, 0);
+		//1
+		glBegin(GL_LINE_LOOP);
+		glVertex3d(x + -127.94, y5, z + 37.72);
+		glVertex3d(x + -130.60, y4, z + 41.13);
+		glVertex3d(x + -127.94, y4, z + 37.72);
+		glEnd();
+
+		glBegin(GL_LINE_LOOP);
+		glVertex3d(x + -136.26, y4, z + 36.72);
+		glVertex3d(x + -130.52, y5, z + 35.70);
+		glVertex3d(x + -127.94, y5, z + 37.72);
+		glVertex3d(x + -130.60, y4, z + 41.13);
+		glEnd();
+
+		glBegin(GL_LINE_LOOP);
+		glVertex3d(x + -137.05, y4, z + 30.30);
+		glVertex3d(x + -136.26, y4, z + 36.72);
+		glVertex3d(x + -130.52, y5, z + 35.70);
+		glVertex3d(x + -131.23, y5, z + 29.90);
+		glEnd();
+
+		glBegin(GL_LINE_LOOP);
+		glVertex3d(x + -137.05, y4, z + 30.30);
+		glVertex3d(x + -131.23, y5, z + 29.90);
+		glVertex3d(x + -129.21, y5, z + 27.32);
+		glVertex3d(x + -132.63, y4, z + 24.65);
+		glEnd();
+
+		glBegin(GL_LINE_LOOP);
+		glVertex3d(x + -129.21, y5, z + 27.32);
+		glVertex3d(x + -132.63, y4, z + 24.65);
+		glVertex3d(x + -129.21, y4, z + 27.32);
+		glEnd();
+
+		//2
+		glBegin(GL_LINE_LOOP);
+		glVertex3d(x + -127.02, y5, z + 38.43);
+		glVertex3d(x + -129.69, y4, z + 41.85);
+		glVertex3d(x + -127.02, y4, z + 38.43);
+		glEnd();
+
+		glBegin(GL_LINE_LOOP);
+		glVertex3d(x + -127.02, y5, z + 38.43);
+		glVertex3d(x + -129.69, y4, z + 41.85);
+		glVertex3d(x + -124.24, y4, z + 46.26);
+		glVertex3d(x + -124.44, y5, z + 40.45);
+		glEnd();
+
+		glBegin(GL_LINE_LOOP);
+		glVertex3d(x + -124.24, y4, z + 46.26);
+		glVertex3d(x + -124.44, y5, z + 40.45);
+		glVertex3d(x + -118.64, y5, z + 39.73);
+		glVertex3d(x + -117.62, y4, z + 45.47);
+		glEnd();
+
+		glBegin(GL_LINE_LOOP);
+		glVertex3d(x + -118.64, y5, z + 39.73);
+		glVertex3d(x + -117.62, y4, z + 45.47);
+		glVertex3d(x + -113.20, y4, z + 39.82);
+		glVertex3d(x + -116.62, y5, z + 37.15);
+		glEnd();
+
+		glBegin(GL_LINE_LOOP);
+		glVertex3d(x + -113.20, y4, z + 39.82);
+		glVertex3d(x + -116.62, y5, z + 37.15);
+		glVertex3d(x + -116.62, y4, z + 37.15);
+		glEnd();
+
+		//3
+		glBegin(GL_LINE_LOOP);
+		glVertex3d(x + -115.91, y4, z + 36.24);
+		glVertex3d(x + -112.49, y4, z + 38.91);
+		glVertex3d(x + -115.91, y5, z + 36.24);
+		glEnd();
+
+		glBegin(GL_LINE_LOOP);
+		glVertex3d(x + -112.49, y4, z + 38.91);
+		glVertex3d(x + -115.91, y5, z + 36.24);
+		glVertex3d(x + -113.89, y5, z + 33.66);
+		glVertex3d(x + -108.07, y4, z + 33.26);
+		glEnd();
+
+		glBegin(GL_LINE_LOOP);
+		glVertex3d(x + -113.89, y5, z + 33.66);
+		glVertex3d(x + -108.07, y4, z + 33.26);
+		glVertex3d(x + -108.86, y4, z + 26.84);
+		glVertex3d(x + -114.60, y5, z + 27.85);
+		glEnd();
+
+		glBegin(GL_LINE_LOOP);
+		glVertex3d(x + -108.86, y4, z + 26.84);
+		glVertex3d(x + -114.60, y5, z + 27.85);
+		glVertex3d(x + -117.18, y5, z + 25.84);
+		glVertex3d(x + -114.51, y4, z + 22.42);
+		glEnd();
+
+		glBegin(GL_LINE_LOOP);
+		glVertex3d(x + -117.18, y5, z + 25.84);
+		glVertex3d(x + -114.51, y4, z + 22.42);
+		glVertex3d(x + -117.18, y4, z + 25.84);
+		glEnd();
+
+		//4
+		glBegin(GL_LINE_LOOP);
+		glVertex3d(x + -118.10, y4, z + 25.12);
+		glVertex3d(x + -115.43, y4, z + 21.71);
+		glVertex3d(x + -118.10, y5, z + 25.12);
+		glEnd();
+
+		glBegin(GL_LINE_LOOP);
+		glVertex3d(x + -115.43, y4, z + 21.71);
+		glVertex3d(x + -118.10, y5, z + 25.12);
+		glVertex3d(x + -120.68, y5, z + 23.11);
+		glVertex3d(x + -121.08, y4, z + 17.29);
+		glEnd();
+
+		glBegin(GL_LINE_LOOP);
+		glVertex3d(x + -120.68, y5, z + 23.11);
+		glVertex3d(x + -121.08, y4, z + 17.29);
+		glVertex3d(x + -127.50, y4, z + 18.08);
+		glVertex3d(x + -126.48, y5, z + 23.82);
+		glEnd();
+
+		glBegin(GL_LINE_LOOP);
+		glVertex3d(x + -127.50, y4, z + 18.08);
+		glVertex3d(x + -126.48, y5, z + 23.82);
+		glVertex3d(x + -128.50, y5, z + 26.40);
+		glVertex3d(x + -131.91, y4, z + 23.73);
+		glEnd();
+
+		glBegin(GL_LINE_LOOP);
+		glVertex3d(x + -128.50, y5, z + 26.40);
+		glVertex3d(x + -131.91, y4, z + 23.73);
+		glVertex3d(x + -128.50, y4, z + 26.40);
+		glEnd();
+	}
+
 	void octagon_atas(double x, double z) {
 		int y5 = 176;
 		glColor3ub(226, 226, 226);
