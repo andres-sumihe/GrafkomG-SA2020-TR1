@@ -2,10 +2,18 @@
 #include <GL/freeglut.h>
 #include "Mall.h"
 #include "Tower.h"
+#include "Object.h"
 
+
+float xpos = 0.0f;
+float ypos = 0.0f;
+float xdiff = 0.0f;
+float ydiff = 0.0f;
+bool mouseDown = false;
 
 tower tw;
 Mall dd;
+object obj;
 
 int is_depth;
 
@@ -16,6 +24,10 @@ public:
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		else
 			glClear(GL_COLOR_BUFFER_BIT);
+	
+		glRotatef(xpos, 1.0f, 0.0f, 0.0f);
+		glRotatef(ypos, 0.0f, 1.0f, 0.0f);
+	
 		//Lantai 1
 		dd.dinding(0.0, 35.0);
 		dd.garis_dinding(0.0, 35.0);
@@ -111,11 +123,14 @@ public:
 		tw.dinding_octagon_atas(190.02, 30.5);
 		tw.dinding_octagon_atas(170.74, -18.53);
 		tw.dinding_octagon_atas(48.58, -103.08);
+		glPushMatrix();
+		glPopMatrix();
 		glutSwapBuffers();
 	}
 	void init() {
 		glClearColor(224 / 255, 255 / 255, 255 / 255, 0.0);
 		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
 		glEnable(GL_LIGHTING);
 		glEnable(GL_COLOR_MATERIAL);
 		glEnable(GL_LIGHT0);
@@ -126,72 +141,63 @@ public:
 		glEnable(GL_POINT_SMOOTH);
 		glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 		glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
+		gluLookAt(0.0f, 0.0f, 3.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+		glRotatef(xpos, 1.0f, 0.0f, 0.0f);
+		glRotatef(ypos, 0.0f, 1.0f, 0.0f);
 		is_depth = 1;
 		glMatrixMode(GL_MODELVIEW);
 		glPointSize(9.0);
 		glLineWidth(1.0f);
 	}
 	void mouse(int* button, int* state, int* x, int* y) {
+		if (*button == GLUT_LEFT_BUTTON && *state == GLUT_DOWN) {
+			mouseDown = true;
+			xdiff = (*x/1000 - ypos) /1000;
+			ydiff = (-*y/1000 + xpos) /1000;
+			std::cout << *x << std::endl;
+		}
+		else {
+			mouseDown = false;
+		}
 		if ((*button == 3) || (*button == 4)) {
+			mouseDown = false;
 			//zoom dengan scrolling mouse
 			if (*state == GLUT_UP) return;
-			(*button == 3) ? glScalef(.99f, .99f, 0.99f) : glScalef(1.01f, 1.01f, 1.01f);
+			(*button == 4 && *state != GLUT_UP) ? glScalef(.99f, .99f, 0.99f) : glScalef(1.01f, 1.01f, 1.01f);
+		}
+		glutPostRedisplay();
+	}
+
+	void Idle() {
+		if (!mouseDown) {
+			xpos += 0.3f;
+			ypos += 0.4f;
 		}
 		glutPostRedisplay();
 	}
 
 	void keyboard(unsigned char* key, int* x, int* y) {
 		switch (*key) {
-		case 'w':
-		case 'W':
-			glTranslatef(0.0, 3.0, 0.0);
-			break;
 		case 'd':
 		case 'D':
 			glTranslatef(3.0, 0.0, 0.0);
 			break;
-		case 's':
-		case 'S':
-			glTranslatef(0.0, -3.0, 0.0);
-			break;
+
 		case 'a':
 		case 'A':
 			glTranslatef(-3.0, 0.0, 0.0);
 			break;	
-		case 'g':
-		case 'G':
-			glRotatef(2.0, 1.0, 0.0, 0.0);
-			break;
-		case 'b':
-		case 'B':
-			glRotatef(-2.0, 1.0, 0.0, 0.0);
-			break;
-		case 'h':
-		case 'H':
-			glRotatef(2.0, 0.0, 1.0, 0.0);
-			break;
-		case 'n':
-		case 'N':
-			glRotatef(-2.0, 0.0, 1.0, 0.0);
-			break;
-		case 'j':
-		case 'J':
-			glRotatef(2.0, 0.0, 0.0, 1.0);
-			break;
-		case 'm':
-		case 'M':
-			glRotatef(-2.0, 0.0, 0.0, 1.0);
-			break;
-		case 'z':
-		case 'Z':
-			glScalef(0.8f, 0.8f, 0.8f);
-			break;
-		case 'x':
-		case 'X':
-			glScalef(1.2f, 1.2f, 1.2f);
-			break;
 		}
 		glutPostRedisplay();
+	}
+
+	void MouseMotion(int *x, int *y) {
+		if (mouseDown) {
+			ypos = *x/100 - xdiff;
+			xpos = *y/100 + xdiff;
+			std::cout << ypos << " : " << xpos << std::endl;
+			glutPostRedisplay();
+		}
 	}
 
 	void ukuran(int *lebar, int *tinggi) {
@@ -201,6 +207,7 @@ public:
 		gluPerspective(50.0, *lebar / *tinggi, 5.0, 1000.0);
 		glTranslatef(0.0, -70.0, -600.0);
 		glMatrixMode(GL_MODELVIEW);
+
 	}
 
 };

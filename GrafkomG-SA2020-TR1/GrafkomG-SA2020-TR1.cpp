@@ -20,7 +20,9 @@ void keyboardFunc(unsigned char key, int x, int y) {
 void ukuranFunc(int lebar, int tinggi) {
 	cc->ukuran(&lebar, &tinggi);
 }
-
+void MouseMotionFunc(int x, int y) {
+	cc->MouseMotion(&x, &y);
+}
 int main(int argc, char** argv){
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_MULTISAMPLE);
@@ -32,7 +34,9 @@ int main(int argc, char** argv){
 	glutDisplayFunc(tampilFunc);
 	glutReshapeFunc(ukuranFunc);
 	glutKeyboardFunc(keyboardFunc);
+	glutMotionFunc(MouseMotionFunc);
 	glutMainLoop();
+
 	return 0;
 }
 
