@@ -5,8 +5,8 @@
 #include "Object.h"
 
 
-float xpos = 0.0f;
-float ypos = 0.0f;
+float xrot = 0.0f;
+float yrot = 0.0f;
 float xdiff = 0.0f;
 float ydiff = 0.0f;
 bool mouseDown = false;
@@ -26,8 +26,10 @@ public:
 		else
 			glClear(GL_COLOR_BUFFER_BIT);
 
-		gluLookAt(0.0f, 0.0f, 0.1f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
 		glPushMatrix();
+		gluLookAt(0.0f, 0.0f, 0.1f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+		glRotatef(xrot, 1.0f, 0.0f, 0.0f);
+		glRotatef(yrot, 0.0f, 1.0f, 0.0f);
 		//Lantai 1
 		dd.dinding(0.0, 35.0);
 		dd.garis_dinding(0.0, 35.0);
@@ -198,26 +200,11 @@ public:
 		glPointSize(9.0);
 		glLineWidth(1.0f);
 	}
-	void mouse(int* button, int* state, int* x, int* y) {
-		
-		std::cout << *button << std::endl;
-		
-		if (*button == GLUT_LEFT_BUTTON && *state == GLUT_DOWN) {
-			mouseDown = true;
-			xdiff = (*x - ypos);
-			ydiff = (-*y + xpos);
-			
-		}
-		else {
-			mouseDown = false;
-		}
-		
-	}
 	
 
 	void Idle() {
 		if (!mouseDown) {
-			ypos += 0.3f;
+			yrot += 0.3f;
 		}
 		glutPostRedisplay();
 	}
@@ -254,15 +241,30 @@ public:
 
 
 	}
+
+	void mouse(int* button, int* state, int* x, int* y) {
+		if (*button == GLUT_LEFT_BUTTON && *state == GLUT_DOWN) {
+			mouseDown = true;
+			xdiff = *x - yrot;
+			ydiff = -*y + xrot;
+			std::cout << "Pressed" << std::endl;
+		}
+		else {
+			mouseDown = false;
+		}
+
+		glutPostRedisplay();
+
+	}
 	void MouseMotion(int *x, int *y) {
 		if (mouseDown) {
-			ypos = *x - xdiff;
-			xpos = *y + xdiff;
-			glLoadIdentity();
-			glRotatef(xpos, 1.0f, 0.0f, 0.0f);
-			glRotatef(ypos, 0.0f, 1.0f, 0.0f);
-			std::cout << ypos << " : " << xpos << std::endl;
-			glutPostRedisplay();
+				yrot = *x - xdiff;
+				xrot = *y + ydiff;
+
+				glutPostRedisplay();
+		
+			std::cout << yrot << " : " << xrot << std::endl;
+			
 		}
 	}
 
