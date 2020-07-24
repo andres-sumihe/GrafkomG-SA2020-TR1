@@ -2,9 +2,10 @@
 #include <GL/freeglut.h>
 #include "Controller.h"
 
+int R = 255, G = 255, B = 255;
 controller *cc;
 void tampilFunc( void ) {
-	cc->tampil();
+	cc->tampil(R, G, B);
 }
 void initFunc( void) {
 	cc->init();
@@ -31,6 +32,17 @@ void mouseWheelFunc(int button, int state, int x, int y) {
 void idleFunc() {
 	cc->Idle();
 }
+
+void Animation(int) {
+
+	glutPostRedisplay();
+	glutTimerFunc(1000, Animation, 0);
+	R = rand() % 255;
+	G = rand() % 255;
+	B = rand() % 255;
+
+}
+
 int main(int argc, char** argv){
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_MULTISAMPLE);
@@ -44,6 +56,7 @@ int main(int argc, char** argv){
 	glutKeyboardFunc(keyboardFunc);
 	glutMotionFunc(MouseMotionFunc);
 	glutMouseWheelFunc(mouseWheelFunc);
+	glutTimerFunc(1000, Animation, 0);
 	//glutIdleFunc(idleFunc);
 	glutMainLoop();
 

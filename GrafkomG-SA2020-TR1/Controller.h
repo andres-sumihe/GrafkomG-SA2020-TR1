@@ -20,7 +20,7 @@ int is_depth;
 
 class controller {
 public:
-	void tampil() {
+	void tampil(int R, int G, int B) {
 		if (is_depth)
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		else
@@ -65,7 +65,7 @@ public:
 		obj.Trotoar(-170, 140, 99, 97);
 
 		//Papan Reklame
-		obj.PapanReklame(0.0, 12.0);
+		obj.PapanReklame(0.0, 12.0, R, G, B);
 		//Strip Jalan
 		obj.StripJalan(-170, -160, 119, 120);
 		obj.StripJalan(-140, -130, 119, 120);
@@ -201,23 +201,21 @@ public:
 		glLineWidth(1.0f);
 	}
 	
-
 	void Idle() {
 		if (!mouseDown) {
 			yrot += 0.3f;
 		}
 		glutPostRedisplay();
 	}
-
 	void keyboard(unsigned char* key, int* x, int* y) {
 		switch (*key) {
-		case 'd':
-		case 'D':
+		case 'h':
+		case 'H':
 			glTranslatef(3.0, 0.0, 0.0);
 			glutPostRedisplay();
 			break;
-		case 'a':
-		case 'A':
+		case 'k':
+		case 'K':
 			glTranslatef(-3.0, 0.0, 0.0);
 			glutPostRedisplay();
 			break;	

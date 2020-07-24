@@ -75,6 +75,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\Users\ACER\Documents\Semester 6\Grafika Komputer\Tools\src\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\ACER\Documents\Semester 6\Grafika Komputer\Tools\library;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>

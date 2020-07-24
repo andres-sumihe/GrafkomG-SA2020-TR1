@@ -299,7 +299,7 @@ public:
 		glLineWidth(1.0f);
 		KotakShape2(1 - x1, 1 + x2, 1 - z1, 1 + z2, 1, 4);
 	}
-	void PapanReklame(double y1, double y2) {
+	void PapanReklame(double y1, double y2, int R, int G, int B) {
 		glColor3ub(102, 102, 102);
 		//dinding
 		glBegin(GL_POLYGON);
@@ -413,7 +413,7 @@ public:
 		glEnd();
 
 		//Huruf T
-		glColor3ub(255, 255, 254);
+		glColor3ub(R, G, B);
 		glBegin(GL_POLYGON);
 		glVertex3d(-27.89, 30, 50.08);
 		glVertex3d(-22.77, 30, 50.08);
