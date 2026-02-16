@@ -4,7 +4,7 @@
 
 using namespace std;
 
-bmploader::bmploader(const char* image) {
+bmploader::bmploader(const char* image) : textureData(nullptr), iWidth(0), iHeight(0) {
 	/*FILE* file = 0;
 	file = fopen(image, "rb");
 	if (!file) cout << "Image Not Found" << endl;

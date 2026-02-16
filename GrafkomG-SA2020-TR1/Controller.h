@@ -1,5 +1,9 @@
 //Author : Andres Sumihe
+#if defined(__APPLE__)
+#include <GLUT/glut.h>
+#else
 #include <GL/freeglut.h>
+#endif
 #include "Mall.h"
 #include "Tower.h"
 #include "Object.h"
@@ -20,6 +24,11 @@ int is_depth;
 
 class controller {
 public:
+	void applyZoom(float factor) {
+		glScalef(factor, factor, factor);
+		glutPostRedisplay();
+	}
+
 	void tampil(int R, int G, int B) {
 		if (is_depth)
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -180,20 +189,14 @@ public:
 		glutSwapBuffers();
 	}
 	void init() {
-		glClearColor(224 / 255, 255 / 255, 255 / 255, 0.0);
-		glOrtho(-200.0, 200.0, -200.0, 200.0, -200.0, 200.0);
+		glClearColor(224.0f / 255.0f, 255.0f / 255.0f, 255.0f / 255.0f, 1.0f);
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
 		glEnable(GL_LIGHTING);
 		glEnable(GL_COLOR_MATERIAL);
 		glEnable(GL_LIGHT0);
 		glEnable(GL_DEPTH_TEST);
-		glEnable(GL_BLEND);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		glEnable(GL_LINE_SMOOTH);
-		glEnable(GL_POINT_SMOOTH);
-		glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-		glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
+		glDepthFunc(GL_LEQUAL);
 		
 		is_depth = 1;
 		glMatrixMode(GL_MODELVIEW);
@@ -218,7 +221,15 @@ public:
 		case 'K':
 			glTranslatef(-3.0, 0.0, 0.0);
 			glutPostRedisplay();
-			break;	
+			break;
+		case 'o':
+		case 'O':
+			applyZoom(1.1f);
+			break;
+		case 'p':
+		case 'P':
+			applyZoom(0.9f);
+			break;
 		default:
 			glTranslatef(0.0, 0.0, 0.0);
 			break;
@@ -228,19 +239,28 @@ public:
 	void mouseWheel(int* button, int* state, int* x, int* y) {
 		std::cout << *state << std::endl;
 		if (*state < 0) {
-			glScalef(.99f, .99f, 0.99f);
-			glutPostRedisplay();
+			applyZoom(0.9f);
 			std::cout << "zoom out" << std::endl;
 		}
 		else {
-			glScalef(1.01f, 1.01f, 1.01f);
-			glutPostRedisplay();
+			applyZoom(1.1f);
 		}
 
 
 	}
 
 	void mouse(int* button, int* state, int* x, int* y) {
+		// Apple GLUT does not expose glutMouseWheelFunc; wheel events usually
+		// come through mouse buttons 3 (up) and 4 (down).
+		if (*state == GLUT_DOWN && *button == 3) {
+			applyZoom(1.01f);
+			return;
+		}
+		if (*state == GLUT_DOWN && *button == 4) {
+			applyZoom(0.99f);
+			return;
+		}
+
 		if (*button == GLUT_LEFT_BUTTON && *state == GLUT_DOWN) {
 			mouseDown = true;
 			xdiff = *x - yrot;
@@ -271,7 +291,7 @@ public:
 		glViewport(0, 0, *lebar, *tinggi);
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
-		gluPerspective(45.0f, *lebar / *tinggi, 5.0, 1000.0);
+		gluPerspective(45.0, static_cast<double>(*lebar) / static_cast<double>(*tinggi), 5.0, 1000.0);
 		glTranslatef(0.0, -70.0, -600.0);
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();

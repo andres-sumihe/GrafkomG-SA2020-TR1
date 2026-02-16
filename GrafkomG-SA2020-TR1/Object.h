@@ -1,5 +1,9 @@
 #pragma once
+#if defined(__APPLE__)
+#include <GLUT/glut.h>
+#else
 #include <GL/freeglut.h>
+#endif
 
 using namespace std;
 

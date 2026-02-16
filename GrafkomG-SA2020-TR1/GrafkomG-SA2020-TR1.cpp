@@ -1,5 +1,9 @@
 #include <iostream>
+#if defined(__APPLE__)
+#include <GLUT/glut.h>
+#else
 #include <GL/freeglut.h>
+#endif
 #include "Controller.h"
 
 int R = 255, G = 255, B = 255;
@@ -45,7 +49,7 @@ void Animation(int) {
 
 int main(int argc, char** argv){
 	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_MULTISAMPLE);
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH | GLUT_MULTISAMPLE);
 	glutInitWindowSize(1000, 600);
 	glutInitWindowPosition(0, 0);
 	glutCreateWindow("Taman Anggrek Mall - 3D");
@@ -55,7 +59,9 @@ int main(int argc, char** argv){
 	glutReshapeFunc(ukuranFunc);
 	glutKeyboardFunc(keyboardFunc);
 	glutMotionFunc(MouseMotionFunc);
+	#if !defined(__APPLE__)
 	glutMouseWheelFunc(mouseWheelFunc);
+	#endif
 	glutTimerFunc(1000, Animation, 0);
 	//glutIdleFunc(idleFunc);
 	glutMainLoop();
